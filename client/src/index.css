@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    font-family: "Poppins", sans-serif;
+    font-size: 17px;
+    line-height: 26px;
+    text-transform: uppercase;
+    box-shadow: 0 8px 6px -6px gray;
+    --webkit-box-shadow: 0 8px 6px -6px gray;
+    border-bottom: solid gray !important;
+}
+
+.nav-link {
+    font-weight: 300 !important;
+}
+
+.active {
+    border-bottom: 2px solid black;
+}
+
+
+/* Page not found */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+}
+
+.error-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+h1 {
+    font-size: 36px;
+    color: #333;
+}
+
+p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+a:hover {
+    background-color: #0056b3;
+}
+
+
+/* Register page   */
+
+
+.formy {
+    font-family: "Poppins", sans-serif;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-top: 100px;
+}
+
+.formy .mb-3 {
+    margin-bottom: 20px;
+}
+
+.formy label {
+    font-weight: bold;
+}
+
+.formy input[type="text"],
+.formy input[type="email"],
+.formy input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.formy input[type="text"]:focus,
+.formy input[type="email"]:focus,
+.formy input[type="password"]:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.formy button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.formy button:hover {
+    background-color: #0056b3;
+}
