@@ -10,4 +10,8 @@ router.post("/login", loginController);
 
 router.get("/test", requireSignIn, testController);
 
+router.get("/auth-check", requireSignIn, (req, res) => {
+    res.status(200).send({ ok: true });
+});
+
 export default router;
