@@ -13,6 +13,11 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import PrivateRoute from './components/Routes/privateRoute';
+import AdminDashboard from './pages/Admin/AdminDashboard';
+import AdminPrivateRoute from './components/Routes/AdminPrivateRoute';
+import CreateCategory from './pages/Admin/CreateCategory';
+import CreateProduct from './pages/Admin/CreateProduct';
+import Users from './pages/Admin/Users';
 
 function App() {
   return (
@@ -25,8 +30,15 @@ function App() {
         <Route path='/*' element={<PageNotFound />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
+
         <Route path="/dashboard" element={<PrivateRoute />}>
           <Route path="" element={<Dashboard />} />
+        </Route>
+        <Route path="/admin/dashboard" element={<AdminPrivateRoute />}>
+          <Route path="" element={<AdminDashboard />} />
+          <Route path="create-product" element={<CreateProduct />}></Route>
+          <Route path="create-category" element={<CreateCategory />}></Route>
+          <Route path="users" element={<Users />}></Route>
         </Route>
       </Routes>
     </div>
