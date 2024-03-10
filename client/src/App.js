@@ -11,13 +11,15 @@ import PageNotFound from './pages/PageNotFound';
 import Contact from './pages/Contact';
 import Register from './pages/Register';
 import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
+import Dashboard from './pages/User/Dashboard';
 import PrivateRoute from './components/Routes/privateRoute';
 import AdminDashboard from './pages/Admin/AdminDashboard';
 import AdminPrivateRoute from './components/Routes/AdminPrivateRoute';
 import CreateCategory from './pages/Admin/CreateCategory';
 import CreateProduct from './pages/Admin/CreateProduct';
 import Users from './pages/Admin/Users';
+import Orders from './pages/User/Orders';
+import Profile from './pages/User/Profile';
 
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
 
         <Route path="/dashboard" element={<PrivateRoute />}>
           <Route path="" element={<Dashboard />} />
+          <Route path="orders" element={<Orders />} />
+          <Route path="profile" element={<Profile />} />
         </Route>
         <Route path="/admin/dashboard" element={<AdminPrivateRoute />}>
           <Route path="" element={<AdminDashboard />} />
