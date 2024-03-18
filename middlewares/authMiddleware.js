@@ -10,7 +10,7 @@ export const requireSignIn = async (req, res, next) => {
         next();
     } catch (error) {
         console.log('I am not working');
-        res.status(401).json({ error: 'Invalid token' });
+        res.status(401).json({ error: 'Invalid token' });  //this line is important
     }
 }
 

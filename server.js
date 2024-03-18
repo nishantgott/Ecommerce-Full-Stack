@@ -5,6 +5,8 @@ import morgan from "morgan";
 import authRoutes from "./routes/authRoute.js";
 import bodyParser from "body-parser";
 import cors from 'cors';
+import categoryRoutes from "./routes/categoryRoutes.js"
+
 
 const app = express()
 
@@ -22,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //routes
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/category", categoryRoutes);
 
 app.get("/", (req, res) => {
     res.send("<h1>Hello there</h1>");
