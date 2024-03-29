@@ -68,3 +68,40 @@ export const deleteProductController = async (req, res) => {
         res.status(500).send({ success: false, error });
     }
 }
+
+export const getFilteredProductsController = async (req, res) => {
+    try {
+        const { checked, radio } = req.body;
+        const args = {};
+        if (checked.length) args.category = checked;
+        const x = parseInt(radio[0], 10);
+        const y = parseInt(radio[1], 10);
+        if (radio.length) args.price = { $gte: x, $lte: y };
+        const products = await productModel.find(args);
+        const temp = typeof x;
+        res.status(200).send({ temp, checked, radio, success: true, message: 'Successfully done', products });
+    } catch (error) {
+        res.status(500).send({ success: false, error });
+    }
+}
+
+export const productCountController = async (req, res) => {
+    try {
+        const count = await productModel.find({}).estimatedDocumentCount();
+        res.status(200).send({ count, message: 'Counted succesfully' });
+    } catch (error) {
+        res.status(500).send({ success: false, error });
+    }
+}
+
+export const productListController = async (req, res) => {
+    try {
+        const pageNo = req.params.page ? req.params.page : 1;
+        const perPage = 3;
+        const products = await productModel.find({}).select("-photo").skip(perPage * (pageNo - 1)).limit(perPage);
+        res.status(200).send({ products, success: true });
+    } catch (error) {
+        res.status(500).send({ success: false, error });
+    }
+
+}
