@@ -21,6 +21,7 @@ import Users from './pages/Admin/Users';
 import Orders from './pages/User/Orders';
 import Profile from './pages/User/Profile';
 import Products from './pages/Admin/Products';
+import SearchPage from './pages/SearchPage';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path='/*' element={<PageNotFound />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/search' element={<SearchPage />} />
 
         <Route path="/dashboard" element={<PrivateRoute />}>
           <Route path="" element={<Dashboard />} />

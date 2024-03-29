@@ -103,5 +103,19 @@ export const productListController = async (req, res) => {
     } catch (error) {
         res.status(500).send({ success: false, error });
     }
+}
 
+export const productSearchController = async (req, res) => {
+    try {
+        const { keyword } = req.params;
+        const products = await productModel.find({
+            $or: [
+                { name: { $regex: keyword, $options: "i" } },
+                { description: { $regex: keyword, $options: "i" } }
+            ]
+        }).select("-photo");
+        res.json(products);
+    } catch (error) {
+        res.status(500).send({ success: false, error });
+    }
 }

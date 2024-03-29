@@ -125,7 +125,7 @@ const HomePage = () => {
     return (
         <Layout>
             <h1>Home page</h1>
-            <p>{JSON.stringify(auth)}</p>
+            {/*<p>{JSON.stringify(auth)}</p>*/}
             <div className='row mt-3'>
                 <div className='col-md-3'>
                     <div className='btn btn-danger' onClick={handleClear}>Clear filter</div><br /><br />
