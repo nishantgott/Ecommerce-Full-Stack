@@ -1,11 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { useAuth } from '../../context/auth'
 import SearchInput from './SearchInput';
+import axios from 'axios';
 
 
 const Header = () => {
     const [auth, setAuth] = useAuth();
+    const [categories, setCategories] = useState([])
+
+    const getAllCategories = async () => {
+        try {
+            const { data } = await axios.get('http://localhost:8080/api/v1/category/category');
+            console.log(data?.categories)
+            if (data?.categories) setCategories(data?.categories);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        getAllCategories();
+        console.log('helloww')
+        console.log(categories);
+    }, [])
+
+    // console.log(auth.user?.role);
+    const whichDashboard = (auth.user?.role) ? "/admin/dashboard" : "/dashboard"
 
     const handleLogout = (e) => {
         localStorage.clear();
@@ -41,9 +62,40 @@ const Header = () => {
                                 </NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to="/category" className="nav-link ">
-                                    Category
-                                </NavLink>
+                                <li className="nav-item dropdown">
+                                    <NavLink
+                                        className="nav-link dropdown-toggle"
+                                        href="#"
+                                        role="button"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false"
+                                    >
+                                        Category
+                                    </NavLink>
+                                    <ul className="dropdown-menu">
+                                        <li>
+                                            <NavLink
+                                                onClick={handleLogout}
+                                                to="/category"
+                                                className="dropdown-item"
+                                            >
+                                                All Categories
+                                            </NavLink>
+                                        </li>
+                                        {
+                                            categories.map(c => {
+                                                const whereTo = `/category/${c.slug}`
+                                                return (
+                                                    <li>
+                                                        <NavLink to={whereTo} className="dropdown-item">
+                                                            {c.slug}
+                                                        </NavLink>
+                                                    </li>
+                                                )
+                                            })
+                                        }
+                                    </ul>
+                                </li>
                             </li>
 
                             {
@@ -61,7 +113,7 @@ const Header = () => {
                                             </NavLink>
                                             <ul className="dropdown-menu">
                                                 <li>
-                                                    <NavLink to="/dashboard" className="dropdown-item">
+                                                    <NavLink to={whichDashboard} className="dropdown-item">
                                                         Dashboard
                                                     </NavLink>
                                                 </li>
