@@ -119,3 +119,16 @@ export const productSearchController = async (req, res) => {
         res.status(500).send({ success: false, error });
     }
 }
+
+export const productsWithCategoryController = async (req, res) => {
+    try {
+        // const cat = 'laptops';
+        const { cat } = req.params;
+        const temp = await categoryModel.findOne({ slug: cat });
+        const c_id = temp._id;
+        const products = await productModel.find({ category: c_id }).select("-photo");
+        res.status(200).send({ products, success: true });
+    } catch (error) {
+        res.status(500).send({ success: false, error });
+    }
+}

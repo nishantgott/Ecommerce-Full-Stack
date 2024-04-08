@@ -55,11 +55,11 @@ const HomePage = () => {
         }
     }
 
-    // useEffect(() => {
-    //     getFilteredProducts();
-    //     console.log(productlist);
-    //     console.log("getfiltered is being called");
-    // }, [radio, checked])
+    useEffect(() => {
+        getFilteredProducts();
+        console.log(productlist);
+        console.log("getfiltered is being called");
+    }, [radio, checked])
 
     useEffect(() => {
         getAllProducts();

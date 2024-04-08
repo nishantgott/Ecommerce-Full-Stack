@@ -1,6 +1,6 @@
 import express from 'express';
 import formidable from 'express-formidable';
-import { createProductController, deleteProductController, getAllProductsController, getFilteredProductsController, getProductController, getProductPhotoController, productCountController, productListController, productSearchController } from '../controllers/productControllers.js';
+import { createProductController, deleteProductController, getAllProductsController, getFilteredProductsController, getProductController, getProductPhotoController, productCountController, productListController, productSearchController, productsWithCategoryController } from '../controllers/productControllers.js';
 
 const router = express.Router();
 
@@ -30,5 +30,8 @@ router.get('/product-list/:page', productListController);
 
 //to search for products using keyword
 router.get('/search/:keyword', productSearchController);
+
+// to get products using category name
+router.get('/category/:cat', productsWithCategoryController);
 
 export default router;
